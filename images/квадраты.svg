@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <!-- Ряд 1 -->
+  <rect x="10" y="10" width="80" height="80" fill="#FF5733" />
+  <rect x="100" y="10" width="80" height="80" fill="#33FF57" />
+  <rect x="190" y="10" width="80" height="80" fill="#3357FF" />
+  
+  <!-- Ряд 2 -->
+  <rect x="10" y="100" width="80" height="80" fill="#FF33F5" />
+  <rect x="100" y="100" width="80" height="80" fill="#FFD733" />
+  <rect x="190" y="100" width="80" height="80" fill="#33FFF5" />
+  
+  <!-- Ряд 3 -->
+  <rect x="10" y="190" width="80" height="80" fill="#F53333" />
+  <rect x="100" y="190" width="80" height="80" fill="#8D33FF" />
+  <rect x="190" y="190" width="80" height="80" fill="#33FF8D" />
+</svg>
