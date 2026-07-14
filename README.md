@@ -1,2 +1,2 @@
 # django-map
-Схема архитектуры приложения Django. Программирование — это просто конструктор.(Django Application Architecture Diagram. Programming is just a constructor.)
+Программирование это просто конструктор. Здесь нет магии.(Programming is just a constructor. There's no magic involved.)
