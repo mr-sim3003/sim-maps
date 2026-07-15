@@ -8,9 +8,9 @@
         a { color: #2980b9; text-decoration: none; }
         a:hover { text-decoration: underline; }
         .map-container { overflow: auto; max-height: 80vh; border: 1px solid #ddd; display: inline-block; }
-        .zoom-img { width: 100%; max-width: 100%; display: block; cursor: zoom-in; transition: max-width 0.3s ease; }
+        .zoom-img { width: 100%; display: block; cursor: zoom-in; transition: width 0.3s ease; }
         .zoom-toggle { display: none; }
-        .zoom-toggle:checked + .map-container .zoom-img { max-width: none; cursor: zoom-out; }
+        .zoom-toggle:checked + .map-container .zoom-img { width: 200%; cursor: zoom-out; }
         .zoom-label { display: inline-block; margin: 10px 0; padding: 8px 16px; background: #2980b9; color: white; border-radius: 5px; cursor: pointer; }
     </style>
 </head>
