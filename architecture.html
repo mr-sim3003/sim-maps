@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 уровней IT-стека — SIM MAPS</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .level {
+            border-radius: 8px;
+            padding: 12px 18px;
+            margin: 6px 0;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+        .level:hover {
+            transform: scale(1.01);
+            transition: 0.2s;
+        }
+        .L10 { background: #e1f5fe; border-left: 5px solid #01579b; }
+        .L9  { background: #c8e6c9; border-left: 5px solid #2e7d32; }
+        .L8  { background: #fff9c4; border-left: 5px solid #fbc02d; }
+        .L7  { background: #ffe0b2; border-left: 5px solid #e65100; }
+        .L6  { background: #ffccbc; border-left: 5px solid #bf360c; }
+        .L5  { background: #f8bbd0; border-left: 5px solid #c2185b; }
+        .L4  { background: #e1bee7; border-left: 5px solid #6a1b9a; }
+        .L3  { background: #bbdefb; border-left: 5px solid #0d47a1; }
+        .L2  { background: #cfd8dc; border-left: 5px solid #37474f; }
+        .L1  { background: #d1c4e9; border-left: 5px solid #4527a0; }
+
+        .level-num {
+            font-weight: bold;
+            font-size: 17px;
+        }
+        .emoji {
+            font-size: 20px;
+            margin-right: 6px;
+        }
+        .desc {
+            color: #555;
+            margin-left: 28px;
+        }
+        .arrow {
+            text-align: center;
+            font-size: 18px;
+            margin: -2px 0;
+            color: #999;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 13px;
+            color: #888;
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🏢 10 уровней IT-стека</h1>
+    <p class="subtitle">От байта до Django-проекта — карта архитектора</p>
+
+    <div class="level L10">
+        <span class="emoji">🏠</span>
+        <span class="level-num">Уровень 10: Django Project</span>
+        <div class="desc">settings.py · urls.py · wsgi.py | INSTALLED_APPS · MIDDLEWARE</div>
+    </div>
+    <div class="arrow">⬇</div>
+
+    <div class="level L9">
+        <span class="emoji">📦</span>
+        <span class="level-num">Уровень 9: Приложения</span>
+        <div class="desc">blog/ · users/ · shop/ · api/ | Независимые модули</div>
+    </div>
+    <div class="arrow">⬇</div>
+
+    <div class="level L8">
+        <span class="emoji">🧱</span>
+        <span class="level-num">Уровень 8: Модули</span>
+        <div class="desc">models.py · views.py · urls.py | forms.py · admin.py · tests.py</div>
+    </div>
+    <div class="arrow">⬇</div>
+
+    <div class="level L7">
+        <span class="emoji">🧩</span>
+        <span class="level-num">Уровень 7: Классы и функции</span>
+        <div class="desc">class Post(Model) · DetailView | get_absolute_url() · clean()</div>
+    </div>
+    <div class="arrow">⬇</div>
+
+    <div class="level L6">
+        <span class="emoji">🔩</span>
+        <span class="level-num">Уровень 6: Механизмы Django/Python</span>
+        <div class="desc">ModelBase (метакласс) · Field (дескриптор) | Manager · QuerySet · Middleware</div>
+    </div>
+    <div class="arrow">⬇</div>
+
+    <div class="level L5">
+        <span class="emoji">⚙️</span>
+        <span class="level-num">Уровень 5: Python-протоколы</span>
+        <div class="desc">__new__ · __init__ · __call__ | __get__ · __set__ · __iter__</div>
+    </div>
+    <div class="arrow">⬇</div>
+
+    <div class="level L4">
+        <span class="emoji">📄</span>
+        <span class="level-num">Уровень 4: Исходники Django</span>
+        <div class="desc">django/db/models/ · django/urls/ | django/core/handlers/ · django/template/</div>
+    </div>
+    <div class="arrow">⬇</div>
+
+    <div class="level L3">
+        <span class="emoji">🐍</span>
+        <span class="level-num">Уровень 3: Язык Python</span>
+        <div class="desc">Всё есть объект · LEGB · декораторы | Итераторы · Unicode · байты</div>
+    </div>
+    <div class="arrow">⬇</div>
+
+    <div class="level L2">
+        <span class="emoji">⚙️</span>
+        <span class="level-num">Уровень 2: C/C++ (CPython)</span>
+        <div class="desc">malloc/free · указатели | Структуры данных · компиляция</div>
+    </div>
+    <div class="arrow">⬇</div>
+
+    <div class="level L1">
+        <span class="emoji">💾</span>
+        <span class="level-num">Уровень 1: Железо</span>
+        <div class="desc">Биты · байты · транзисторы | Процессор · память · машинный код</div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 mr-sim3003 · <a href="https://mr-sim3003.github.io/sim-maps/">SIM MAPS</a></p>
+    </div>
+
+</body>
+</html>
