@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>URLResolver — SIM MAPS</title>
+    <style>
+        /* ===== ОБЩИЕ СТИЛИ ===== */
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #f9f9f9; 
+            padding: 20px; 
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 { color: #2c3e50; border-bottom: 2px solid #bf360c; padding-bottom: 10px; }
+        h2 { color: #2c3e50; margin-top: 30px; }
+        
+        /* ===== УРОВНИ ===== */
+        .level { 
+            margin: 20px 0; 
+            padding: 15px; 
+            border-radius: 10px; 
+        }
+        .level5 { background: #bbdefb; border: 2px solid #0d47a1; }
+        .level6 { background: #ffccbc; border: 2px solid #bf360c; }
+        .level7 { background: #c8e6c9; border: 2px solid #2e7d32; }
+        .level8 { background: #fff9c4; border: 2px solid #fbc02d; }
+        .level-title { font-weight: bold; margin-bottom: 10px; font-size: 18px; }
+        .arrow-down { text-align: center; font-size: 24px; color: #666; margin: 5px 0; }
+        
+        /* ===== УЗЛЫ С TOOLTIP'АМИ ===== */
+        .node {
+            position: relative;
+            display: inline-block;
+            padding: 10px 16px;
+            margin: 4px;
+            background: white;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .node:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .node-level5 { border-color: #0d47a1; }
+        .node-level6 { border-color: #bf360c; }
+        .node-level7 { border-color: #2e7d32; }
+        
+        /* ===== TOOLTIP ===== */
+        .tooltip {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            white-space: nowrap;
+            z-index: 10;
+            font-weight: normal;
+            font-size: 13px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        .tooltip a {
+            color: #64b5f6;
+            text-decoration: underline;
+        }
+        .tooltip a:hover {
+            color: #90caf9;
+        }
+        .node:hover .tooltip {
+            display: block;
+        }
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: #333;
+        }
+        
+        /* ===== БОЛЬШОЙ БЛОК МЕХАНИЗМА ===== */
+        .big-mechanism {
+            display: inline-block;
+            padding: 20px;
+            margin: 10px 0;
+            background: white;
+            border: 3px dashed #bf360c;
+            border-radius: 12px;
+        }
+        .big-mechanism-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #bf360c;
+            margin-bottom: 10px;
+        }
+        
+        /* ===== ССЫЛКИ И СВЯЗИ ===== */
+        .links-section {
+            margin: 30px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .links-section a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        .links-section a:hover {
+            text-decoration: underline;
+        }
+        .nav-back {
+            margin-top: 30px;
+            font-size: 16px;
+        }
+        .nav-back a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        .nav-back a:hover {
+            text-decoration: underline;
+        }
+        
+        /* ===== КОД ===== */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🧩 URLResolver — Механизм маршрутизации Django</h1>
+    <p><strong>Уровень 6.</strong> Главный диспетчер URL. Хранит список паттернов и находит view по адресу.</p>
+
+    <!-- ===== УРОВЕНЬ 5 → 6 ===== -->
+    <h2>⚙️ Сборка: Python-протоколы → URLResolver</h2>
+    
+    <div class="level level5">
+        <div class="level-title">⚙️ Уровень 5: Python-протоколы (инструменты)</div>
+        
+        <div class="node node-level5">
+            🔁 for
+            <div class="tooltip">
+                <b>Цикл for</b><br>
+                📘 <a href="#">Лутц, Глава 9</a><br>
+                Перебирает url_patterns
+            </div>
+        </div>
+        
+        <div class="node node-level5">
+            🔀 if
+            <div class="tooltip">
+                <b>Условный оператор</b><br>
+                📘 <a href="#">Лутц, Глава 7</a><br>
+                Проверяет совпадение
+            </div>
+        </div>
+        
+        <div class="node node-level5">
+            📖 dict
+            <div class="tooltip">
+                <b>Словарь (key-value)</b><br>
+                📘 <a href="#">Лутц, Глава 5</a><br>
+                Паттерн хранит пару URL→view
+            </div>
+        </div>
+        
+        <div class="node node-level5">
+            📞 .method()
+            <div class="tooltip">
+                <b>Вызов метода</b><br>
+                📘 <a href="#">Лутц, Глава 11</a><br>
+                pattern.resolve(path)
+            </div>
+        </div>
+        
+        <div class="node node-level5">
+            ⚠️ raise
+            <div class="tooltip">
+                <b>Исключения</b><br>
+                📘 <a href="#">Лутц, Глава 26</a><br>
+                Resolver404 если не найдено
+            </div>
+        </div>
+    </div>
+    
+    <div class="arrow-down">▼ собираются в один шаг ▼</div>
+    
+    <!-- ===== УРОВЕНЬ 6: МЕХАНИЗМ ===== -->
+    <div class="level level6">
+        <div class="level-title">🔩 Уровень 6: URLResolver (готовый механизм)</div>
+        
+        <div class="big-mechanism">
+            <div class="big-mechanism-title">🧩 URLResolver</div>
+            
+            <div class="node node-level6">
+                📦 url_patterns
+                <div class="tooltip">
+                    <b>Список паттернов</b><br>
+                    Каждый элемент — URLPattern<br>
+                    Загружается через _populate()<br>
+                    📄 <a href="https://github.com/django/django/blob/main/django/urls/resolvers.py" target="_blank">Исходник</a><br>
+                    📝 <a href="#">Упрощённый исходник</a>
+                </div>
+            </div>
+            
+            <div class="node node-level6">
+                ⚙️ resolve(path)
+                <div class="tooltip">
+                    <b>Метод поиска</b><br>
+                    🔁 for pattern in url_patterns:<br>
+                    🔀 if match: return match<br>
+                    ⚠️ raise Resolver404
+                </div>
+            </div>
+            
+            <div class="node node-level6">
+                📦 ResolverMatch
+                <div class="tooltip">
+                    <b>Результат поиска</b><br>
+                    📖 .func — указатель на view<br>
+                    🔢 .kwargs — параметры из URL<br>
+                    🏷️ .url_name — имя паттерна
+                </div>
+            </div>
+            
+            <p style="margin-top:15px;font-size:14px;">
+                <b>📐 Архитектурный паттерн:</b> Композиция<br>
+                <b>📘 Лутц:</b> Глава 25 (Композиция vs Наследование), Глава 5 (Словари)
+            </p>
+        </div>
+    </div>
+    
+    <div class="arrow-down">▼ используется через ▼</div>
+    
+    <!-- ===== УРОВЕНЬ 7: ИСПОЛЬЗОВАНИЕ ===== -->
+    <div class="level level7">
+        <div class="level-title">🏭 Уровень 7: Сборочная линия (использование)</div>
+        
+        <div class="node node-level7">
+            📝 path()
+            <div class="tooltip">
+                <b>Создаёт URLPattern</b><br>
+                path('url/', view, name='name')<br>
+                📖 <a href="#">Меле, Глава 1</a>
+            </div>
+        </div>
+        
+        <div class="node node-level7">
+            📥 include()
+            <div class="tooltip">
+                <b>Подключает другой URLResolver</b><br>
+                include('blog.urls')<br>
+                Создаёт вложенный диспетчер
+            </div>
+        </div>
+        
+        <div class="node node-level7">
+            🔄 reverse()
+            <div class="tooltip">
+                <b>Поиск URL по имени</b><br>
+                reverse('blog:detail', args=[id])
+            </div>
+        </div>
+        
+        <div class="node node-level7">
+            🔗 get_absolute_url()
+            <div class="tooltip">
+                <b>Метод модели</b><br>
+                Использует reverse() внутри<br>
+                📖 <a href="#">Меле, Глава 5</a>
+            </div>
+        </div>
+        
+        <div class="node node-level7">
+            🏷️ {% url %}
+            <div class="tooltip">
+                <b>Тег шаблона</b><br>
+                {% url 'blog:detail' post.slug %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="arrow-down">▼ живут в ▼</div>
+    
+    <!-- ===== УРОВЕНЬ 8: МОДУЛИ ===== -->
+    <div class="level level8">
+        <div class="level-title">🧱 Уровень 8: Модули (кубики)</div>
+        
+        <div class="node" style="border-color:#fbc02d;">
+            📄 urls.py
+            <div class="tooltip">
+                <b>Маршруты приложения</b><br>
+                urlpatterns = [...]<br>
+                path(), include()
+            </div>
+        </div>
+        
+        <div class="node" style="border-color:#fbc02d;">
+            📄 views.py
+            <div class="tooltip">
+                <b>Логика обработки</b><br>
+                reverse(), redirect()
+            </div>
+        </div>
+        
+        <div class="node" style="border-color:#fbc02d;">
+            📄 models.py
+            <div class="tooltip">
+                <b>Модели данных</b><br>
+                get_absolute_url()
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== СВЯЗИ ===== -->
+    <div class="links-section">
+        <h3>🔗 Связи</h3>
+        <p>⬆️ <a href="#">Уровень 5: Python-протоколы</a> — из чего собран</p>
+        <p>⬇️ <a href="#">Уровень 7: Сборочная линия</a> — как используется</p>
+        <p>🏠 <a href="#">Уровень 8: Модули</a> — где живёт</p>
+        <p>📄 <a href="https://github.com/django/django/blob/main/django/urls/resolvers.py" target="_blank">Реальный исходник (GitHub)</a></p>
+        <p>📝 <a href="#">Упрощённый исходник (SIM MAPS)</a></p>
+        <p>📘 <a href="#">Марк Лутц: Глава 5, 7, 9, 11, 25, 26</a></p>
+        <p>📖 <a href="#">Антонио Меле: Глава 1 (path), Глава 3 (include), Глава 5 (get_absolute_url)</a></p>
+    </div>
+
+    <!-- ===== НАВИГАЦИЯ ===== -->
+    <div class="nav-back">
+        <p>← <a href="#">Назад к карте Django</a> | <a href="#">📖 Оглавление</a> | <a href="#">🏠 На портал SIM MAPS</a></p>
+    </div>
+
+</body>
+</html>
